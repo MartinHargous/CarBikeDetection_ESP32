@@ -1,0 +1,97 @@
+[1/11] Generating ../../image2.S
+[2/11] Performing build step for 'bootloader'
+[1/1] cd /home/mmhargous/esp/projects_tf/person_detection/build/bootloader/esp-idf/esptool_py && /home/mmhargous/esp/idf-tools/python_env/idf5.4_py3.10_env/bin/python /home/mmhargous/esp/idf/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/mmhargous/esp/projects_tf/person_detection/build/bootloader/bootloader.bin
+Bootloader binary size 0x6f50 bytes. 0xb0 bytes (1%) free.
+[3/9] Building ASM object esp-idf/static_images/CMakeFiles/__idf_static_images.dir/__/__/image2.S.obj
+[4/9] Linking C static library esp-idf/static_images/libstatic_images.a
+[5/9] Generating ld/sections.ld
+[6/9] Linking CXX executable person_detection.elf
+[7/9] Generating binary image from built executable
+esptool.py v4.8.dev3
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/mmhargous/esp/projects_tf/person_detection/build/person_detection.bin
+[8/9] cd /home/mmhargous/esp/projects_tf/person_detection/build/esp-idf/esptool_py && /home/mmhargous/esp/idf-tools/python_env/idf5.4_py3.10_env/bin/python /home/mmhargous/esp/idf/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/mmhargous/esp/projects_tf/person_detection/build/partition_table/partition-table.bin /home/mmhargous/esp/projects_tf/person_detection/build/person_detection.bin
+person_detection.bin binary size 0x104880 bytes. Smallest app partition is 0x300000 bytes. 0x1fb780 bytes (66%) free.
+[8/9] cd /home/mmhargous/esp/idf/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/mmhargous/esp/idf/esp-idf -D "SERIAL_TOOL=/home/mmhargous/esp/idf-tools/python_env/idf5.4_py3.10_env/bin/python;;/home/mmhargous/esp/idf/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/mmhargous/esp/projects_tf/person_detection/build -P /home/mmhargous/esp/idf/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader/bootloader.bin 0x10000 person_detection.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.8.dev3
+Serial port /dev/ttyUSB0
+Connecting.......
+Chip is ESP32-D0WDQ6 (revision v1.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 08:f9:e0:c6:ae:84
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x00114fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 28496 bytes to 17352...
+Writing at 0x00001000... (50 %)
+Writing at 0x00007a4a... (100 %)
+Wrote 28496 bytes (17352 compressed) at 0x00001000 in 0.7 seconds (effective 348.4 kbit/s)...
+Hash of data verified.
+Compressed 1067136 bytes to 759318...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001cba7... (4 %)
+Writing at 0x00020e5e... (6 %)
+Writing at 0x00025558... (8 %)
+Writing at 0x0002a4d8... (10 %)
+Writing at 0x0002f3c8... (12 %)
+Writing at 0x0003422b... (14 %)
+Writing at 0x0003932b... (17 %)
+Writing at 0x0003e188... (19 %)
+Writing at 0x00042fa6... (21 %)
+Writing at 0x00047d88... (23 %)
+Writing at 0x0004cc11... (25 %)
+Writing at 0x00051a18... (27 %)
+Writing at 0x000567c9... (29 %)
+Writing at 0x0005b5af... (31 %)
+Writing at 0x0006044c... (34 %)
+Writing at 0x000652c2... (36 %)
+Writing at 0x00069f75... (38 %)
+Writing at 0x0006e716... (40 %)
+Writing at 0x00072da5... (42 %)
+Writing at 0x00077216... (44 %)
+Writing at 0x0007d6e8... (46 %)
+Writing at 0x00087509... (48 %)
+Writing at 0x00090e75... (51 %)
+Writing at 0x0009847c... (53 %)
+Writing at 0x0009e0ca... (55 %)
+Writing at 0x000a3520... (57 %)
+Writing at 0x000a88ef... (59 %)
+Writing at 0x000ad691... (61 %)
+Writing at 0x000b2104... (63 %)
+Writing at 0x000b6889... (65 %)
+Writing at 0x000bae61... (68 %)
+Writing at 0x000bf4c8... (70 %)
+Writing at 0x000c3eac... (72 %)
+Writing at 0x000c87fc... (74 %)
+Writing at 0x000ce318... (76 %)
+Writing at 0x000d65b1... (78 %)
+Writing at 0x000dbdc7... (80 %)
+Writing at 0x000e1e0f... (82 %)
+Writing at 0x000e71f9... (85 %)
+Writing at 0x000ec64c... (87 %)
+Writing at 0x000f1925... (89 %)
+Writing at 0x000f6b4c... (91 %)
+Writing at 0x000fc077... (93 %)
+Writing at 0x00103c04... (95 %)
+Writing at 0x0010cc1d... (97 %)
+Writing at 0x00112857... (100 %)
+Wrote 1067136 bytes (759318 compressed) at 0x00010000 in 17.1 seconds (effective 499.8 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 105...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (105 compressed) at 0x00008000 in 0.0 seconds (effective 661.0 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

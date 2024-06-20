@@ -1,0 +1,113 @@
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),bo�ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:7524
+load:0x40078000,len:16552
+load:0x40080400,len:4
+load:0x40080404,len:4316
+entry 0x4008065c
+[0;32mI (29) boot: ESP-IDF v5.4-dev-421-g4523f2d674 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Jun 17 2024 17:13:38[0m
+[0;32mI (30) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.1[0m
+[0;32mI (38) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (43) boot.esp32: SPI Speed      : 80MHz[0m
+[0;32mI (48) boot.esp32: SPI Mode       : QIO[0m
+[0;32mI (53) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (57) boot: Enabling RNG early entropy source...[0m
+[0;32mI (63) boot: Partition Table:[0m
+[0;32mI (66) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (74) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (81) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (88) boot:  2 factory          factory app      00 00 00010000 00300000[0m
+[0;32mI (96) boot: End of partition table[0m
+[0;32mI (100) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=cff4ch (851788) map[0m
+[0;32mI (327) esp_image: segment 1: paddr=000dff74 vaddr=3ffb0000 size=000a4h (   164) load[0m
+[0;32mI (327) esp_image: segment 2: paddr=000e0020 vaddr=400d0020 size=32180h (205184) map[0m
+[0;32mI (385) esp_image: segment 3: paddr=001121a8 vaddr=3ffb00a4 size=021d4h (  8660) load[0m
+[0;32mI (388) esp_image: segment 4: paddr=00114384 vaddr=40080000 size=10314h ( 66324) load[0m
+[0;32mI (419) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (419) boot: Disabling RNG early entropy source...[0m
+[0;32mI (431) cpu_start: Multicore app[0m
+[0;32mI (431) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (431) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (433) esp_psram: Speed: 80MHz[0m
+[0;32mI (437) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (445) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (917) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (925) cpu_start: Pro cpu start user code[0m
+[0;32mI (925) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (925) app_init: Application information:[0m
+[0;32mI (928) app_init: Project name:     person_detection[0m
+[0;32mI (934) app_init: App version:      1[0m
+[0;32mI (938) app_init: Compile time:     Jun 17 2024 17:13:36[0m
+[0;32mI (944) app_init: ELF file SHA256:  179782684...[0m
+[0;32mI (949) app_init: ESP-IDF:          v5.4-dev-421-g4523f2d674[0m
+[0;32mI (956) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (960) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (965) efuse_init: Chip rev:         v1.1[0m
+[0;32mI (970) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (977) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (983) heap_init: At 3FFB3038 len 0002CFC8 (179 KiB): DRAM[0m
+[0;32mI (990) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (996) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1002) heap_init: At 40090314 len 0000FCEC (63 KiB): IRAM[0m
+[0;32mI (1009) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;32mI (1017) spi_flash: detected chip: generic[0m
+[0;32mI (1021) spi_flash: flash io: qio[0m
+[0;32mI (1025) main_task: Started on CPU0[0m
+[0;32mI (1035) main_task: Calling app_main()[0m
+Before allocation
+Total heap size: 4513912
+Free heap size: 4488796
+Total PSRAM size: 4194304
+Free PSRAM size: 4191744
+Successfully allocated 742400 bytes in PSRAM.
+After successful PSRAM allocation
+Total heap size: 4513912
+Free heap size: 3746392
+Total PSRAM size: 4194304
+Free PSRAM size: 3449340
+[0;32mI (1055) [esp_cli]: Registering command: mem-dump[0m
+[0;32mI (1065) [esp_cli]: Registering command: task-dump[0m
+[0;32mI (1065) [esp_cli]: Registering command: cpu-dump[0m
+[0;32mI (1075) [esp_cli]: Registering command: detect_image[0m
+[5n
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+
+Your terminal application does not support escape sequences.
+
+Line editing and history features are disabled.
+
+On Windows, try using Putty instead.
+esp> detect_image   1
+
+[0;31mE (18095) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[0;31mE (18095) task_wdt:  - IDLE0 (CPU 0)[0m
+[0;31mE (18095) task_wdt: Tasks currently running:[0m
+[0;31mE (18095) task_wdt: CPU 0: console_repl[0m
+[0;31mE (18095) task_wdt: CPU 1: IDLE1[0m
+[0;31mE (18095) task_wdt: Print CPU 0 (current core) backtrace[0m
+
+
+Backtrace: 0x400EA363:0x3FFB10B0 0x40084315:0x3FFB10E0 0x400E7243:0x3FFB3C80 0x400E0A86:0x3FFB3D50 0x400DD081:0x3FFB4290 0x400DCD56:0x3FFB42C0 0x400D96E5:0x3FFB42E0 0x400D9893:0x3FFB4310 0x400D9EC3:0x3FFB4330 0x400DA0C4:0x3FFB4350
+
+Total time = 9357
+Softmax time = 0
+FC time = 33
+DC time = 0
+conv time = 9194
+Pooling time = 127
+add time = 0
+mul time = 0
+car score:0%, bike score 0%
+-0.003906[0;32mI (22475) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (22485) [esp_cli]: Time required for the inference is 9372 ms[0m
+esp> 
