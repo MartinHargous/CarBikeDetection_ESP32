@@ -25,9 +25,7 @@ limitations under the License.
 #include "tensorflow/lite/micro/kernels/quantize.h"
 #include "tensorflow/lite/micro/micro_log.h"
 #include "tensorflow/lite/micro/micro_utils.h"
-#include <esp_timer.h>
 
-long long quantize_total_time = 0;
 namespace tflite {
 
 TfLiteStatus PrepareQuantizeReference(TfLiteContext* context,
@@ -92,7 +90,6 @@ TfLiteStatus PrepareQuantizeReference(TfLiteContext* context,
 }
 
 TfLiteStatus EvalQuantizeReference(TfLiteContext* context, TfLiteNode* node) {
-  long long start_time = esp_timer_get_time();
   TFLITE_DCHECK(node->user_data != nullptr);
   auto* data = static_cast<OpDataQuantizeReference*>(node->user_data);
 
@@ -235,7 +232,7 @@ TfLiteStatus EvalQuantizeReference(TfLiteContext* context, TfLiteNode* node) {
                 TfLiteTypeGetName(output->type));
     return kTfLiteError;
   }
-  quantize_total_time += esp_timer_get_time() - start_time;
+
   return kTfLiteOk;
 }
 

@@ -25,19 +25,16 @@ limitations under the License.
 #include "tensorflow/lite/micro/kernels/kernel_util.h"
 #include "tensorflow/lite/micro/memory_helpers.h"
 #include "tensorflow/lite/micro/micro_utils.h"
-#include <esp_timer.h>
 
-long long reshape_total_time = 0;
 namespace tflite {
 namespace {
 
 TfLiteStatus EvalReshapeReference(TfLiteContext* context, TfLiteNode* node) {
-  long long start_time = esp_timer_get_time();
   const TfLiteEvalTensor* input =
       tflite::micro::GetEvalInput(context, node, kReshapeInputTensor);
   TfLiteEvalTensor* output =
       tflite::micro::GetEvalOutput(context, node, kReshapeOutputTensor);
-  
+
   // TODO(b/162522304): storing input bytes in OpData increases some models
   // significantly, possibly due to alignment issues.
   size_t input_bytes;
@@ -49,7 +46,6 @@ TfLiteStatus EvalReshapeReference(TfLiteContext* context, TfLiteNode* node) {
     // Otherwise perform reshape with copy.
     memcpy(output->data.raw, input->data.raw, input_bytes);
   }
-  reshape_total_time += esp_timer_get_time() - start_time;
   return kTfLiteOk;
 }
 

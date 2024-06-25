@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "person_detection",
-    "project_version":    "1",
+    "project_version":    "b8c6e21-dirty",
     "project_path":       "/home/mmhargous/esp/projects_tf/person_detection",
     "idf_path":           "/home/mmhargous/esp/idf/esp-idf",
     "build_dir":          "/home/mmhargous/esp/projects_tf/person_detection/build",
@@ -1195,7 +1195,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__esp-tflite-micro", "espressif__esp32-camera" ],
             "file": "/home/mmhargous/esp/projects_tf/person_detection/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/mmhargous/esp/projects_tf/person_detection/main/detection_responder.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/image_provider.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/main.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/main_functions.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/model_settings.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/person_detect_model_data.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/app_camera_esp.c", "/home/mmhargous/esp/projects_tf/person_detection/main/esp_cli.c" ],
+            "sources": [ "/home/mmhargous/esp/projects_tf/person_detection/main/detection_responder.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/image_provider.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/main.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/main_functions.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/model_settings.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/person_detect_model_data.cc", "/home/mmhargous/esp/projects_tf/person_detection/main/app_camera_esp.c", "/home/mmhargous/esp/projects_tf/person_detection/main/esp_cli.c", "/home/mmhargous/esp/projects_tf/person_detection/main/i2c-lcd.c" ],
             "include_dirs": []
         },
         "mbedtls": {
@@ -2811,18 +2811,6 @@
             "managed_priv_reqs": [],
             "include_dirs": []
         },
-        "espressif__esp-nn": {
-            "alias": "idf::espressif__esp-nn",
-            "target": "___idf_espressif__esp-nn",
-            "prefix": "idf",
-            "dir": "/home/mmhargous/esp/projects_tf/person_detection/managed_components/espressif__esp-nn",
-            "lib": "__idf_espressif__esp-nn",
-            "reqs": [],
-            "priv_reqs": [],
-            "managed_reqs": [],
-            "managed_priv_reqs": [],
-            "include_dirs": [ "include", "src/common" ]
-        },
         "espressif__esp-tflite-micro": {
             "alias": "idf::espressif__esp-tflite-micro",
             "target": "___idf_espressif__esp-tflite-micro",
@@ -2834,6 +2822,18 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__esp-nn" ],
             "include_dirs": [ ".", "third_party/gemmlowp", "third_party/flatbuffers/include", "third_party/ruy", "third_party/kissfft", "signal/micro/kernels", "signal/src", "signal/src/kiss_fft_wrappers" ]
+        },
+        "espressif__esp-nn": {
+            "alias": "idf::espressif__esp-nn",
+            "target": "___idf_espressif__esp-nn",
+            "prefix": "idf",
+            "dir": "/home/mmhargous/esp/projects_tf/person_detection/managed_components/espressif__esp-nn",
+            "lib": "__idf_espressif__esp-nn",
+            "reqs": [],
+            "priv_reqs": [],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "include_dirs": [ "include", "src/common" ]
         },
         "espressif__esp32-camera": {
             "alias": "idf::espressif__esp32-camera",

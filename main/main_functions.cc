@@ -23,7 +23,7 @@ limitations under the License.
 #include "tensorflow/lite/micro/micro_log.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
 #include "tensorflow/lite/schema/schema_generated.h"
-
+#include "tensorflow/lite/micro/micro_profiler.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
@@ -33,6 +33,9 @@ limitations under the License.
 #include "esp_main.h"
 #include "esp_psram.h"
 #include "esp_task_wdt.h"
+#include "driver/gpio.h"
+
+
 // Globals, used for compatibility with Arduino-style sketches.
 namespace {
 const tflite::Model* model = nullptr;
@@ -45,7 +48,7 @@ TfLiteTensor* input = nullptr;
 // signed format. The easiest and quickest way to convert from unsigned to
 // signed 8-bit integers is to subtract 128 from the unsigned value to get a
 // signed value.
-
+int count = 0;
 #ifdef CONFIG_IDF_TARGET_ESP32S3
 constexpr int scratchBufSize = 40 * 1024;
 #else
@@ -56,11 +59,15 @@ constexpr int kTensorArenaSize = 375 * 1024 + scratchBufSize;
 static uint8_t *tensor_arena;
 //[kTensorArenaSize]; // Maybe we should move this to external
 }  // namespace
+tflite::MicroProfiler profiler; 
+// Funciones para medir los ticks
 
 // The name of this function is important for Arduino compatibility.
 #include "esp_heap_caps.h"
 #include "esp_log.h"
-
+#define LED_PIN GPIO_NUM_4
+#define I2C_SDA_PIN GPIO_NUM_14
+#define I2C_SCL_PIN GPIO_NUM_15
 #include "esp_heap_caps.h"
 #include "esp_log.h"
 
@@ -73,9 +80,11 @@ void print_memory_statistics(const char* tag) {
 }
 
 void setup() {
+  
   // Print memory statistics before allocation
   print_memory_statistics("Before allocation");
-
+  esp_rom_gpio_pad_select_gpio(LED_PIN);
+  gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
   // Attempt to allocate memory in PSRAM first
   tensor_arena = (uint8_t *) heap_caps_malloc(kTensorArenaSize, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
   if (tensor_arena == NULL) {
@@ -119,6 +128,7 @@ void setup() {
   if (micro_op_resolver.AddReshape() != kTfLiteOk) return;
   if (micro_op_resolver.AddSoftmax() != kTfLiteOk) return;
   if (micro_op_resolver.AddDequantize() != kTfLiteOk) return;
+
   // Build an interpreter to run the model with.
   static tflite::MicroInterpreter static_interpreter(
       model, micro_op_resolver, tensor_arena, kTensorArenaSize);
@@ -148,22 +158,22 @@ void setup() {
 // The name of this function is important for Arduino compatibility.
 void loop() {
   // Get image from provider.
-
+  vTaskDelay(5);
+  gpio_set_level(LED_PIN, 1);
   if (kTfLiteOk != GetImage(kNumCols, kNumRows, kNumChannels, input->data.int8)) {
     MicroPrintf("Image capture failed.");
   }
-
-
+  
   // Run the model on this input and make sure it succeeds.
   if (kTfLiteOk != interpreter->Invoke()) {
     MicroPrintf("Invoke failed.");
   }
-
+  
   TfLiteTensor* output = interpreter->output(0);
-
+  gpio_set_level(LED_PIN, 0);
   // Process the inference results.
-  int8_t car_score = output->data.uint8[kCarIndex];
-  int8_t bike_score = output->data.uint8[kBikeIndex];
+  float car_score = output->data.uint8[kCarIndex];
+  float bike_score = output->data.uint8[kBikeIndex];
 
   float car_score_f =
       (car_score - output->params.zero_point) * output->params.scale;
@@ -171,9 +181,9 @@ void loop() {
       (bike_score - output->params.zero_point) * output->params.scale;
 
   // Respond to detection
-  RespondToDetection(car_score_f, bike_score_f);
-
-  vTaskDelay(1); // to avoid watchdog trigger
+  RespondToDetection(car_score_f, bike_score_f, count);
+  count += 1;
+  vTaskDelay(500); // to avoid watchdog trigger
 }
 #endif
 
@@ -192,8 +202,12 @@ void loop() {
   extern long long dequantize_total_time;
 #endif
 
+
+ 
+
 void run_inference(void *ptr) {
   /* Convert from uint8 picture data to int8 */
+
   for (int i = 0; i < kNumCols * kNumRows; i++) {
     input->data.int8[i] = ((uint8_t *) ptr)[i] ^ 0x80;
     //printf("%d, ", input->data.int8[i]);
@@ -203,10 +217,11 @@ void run_inference(void *ptr) {
   long long start_time = esp_timer_get_time();
 #endif
   // Run the model on this input and make sure it succeeds.
+  
   if (kTfLiteOk != interpreter->Invoke()) {
     MicroPrintf("Invoke failed.");
   }
-
+  
 #if defined(COLLECT_CPU_STATS)
   long long total_time = (esp_timer_get_time() - start_time);
   printf("Total time = %lld\n", total_time / 1000);
@@ -277,6 +292,6 @@ void run_inference(void *ptr) {
       (car_score - output->params.zero_point) * output->params.scale;
   float bike_score_f =
       (bike_score - output->params.zero_point) * output->params.scale;
-  RespondToDetection(car_score_f, bike_score_f);
+  RespondToDetection(car_score_f, bike_score_f, count);
 
 }

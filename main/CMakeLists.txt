@@ -13,6 +13,6 @@ idf_component_register(
         "person_detect_model_data.cc"
         "app_camera_esp.c"
         "esp_cli.c"
-
+        "i2c-lcd.c"
     PRIV_REQUIRES console static_images spi_flash esp_psram
     INCLUDE_DIRS "")

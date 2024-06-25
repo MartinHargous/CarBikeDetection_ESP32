@@ -1,0 +1,539 @@
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),bo�ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:7524
+load:0x40078000,len:16552
+load:0x40080400,len:4
+load:0x40080404,len:4312
+entry 0x4008065c
+[0;32mI (29) boot: ESP-IDF v5.4-dev-421-g4523f2d674 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Jun 24 2024 23:59:27[0m
+[0;32mI (30) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.1[0m
+[0;32mI (38) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (43) boot.esp32: SPI Speed      : 80MHz[0m
+[0;32mI (48) boot.esp32: SPI Mode       : QIO[0m
+[0;32mI (53) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (57) boot: Enabling RNG early entropy source...[0m
+[0;32mI (63) boot: Partition Table:[0m
+[0;32mI (66) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (73) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (81) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (88) boot:  2 factory          factory app      00 00 00010000 00300000[0m
+[0;32mI (96) boot: End of partition table[0m
+[0;32mI (100) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=6fad4h (457428) map[0m
+[0;32mI (226) esp_image: segment 1: paddr=0007fafc vaddr=3ffb0000 size=0051ch (  1308) load[0m
+[0;32mI (227) esp_image: segment 2: paddr=00080020 vaddr=400d0020 size=2f828h (194600) map[0m
+[0;32mI (282) esp_image: segment 3: paddr=000af850 vaddr=3ffb051c size=02e40h ( 11840) load[0m
+[0;32mI (285) esp_image: segment 4: paddr=000b2698 vaddr=40080000 size=10a28h ( 68136) load[0m
+[0;32mI (317) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (317) boot: Disabling RNG early entropy source...[0m
+[0;32mI (328) cpu_start: Multicore app[0m
+[0;32mI (329) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (329) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (333) esp_psram: Speed: 80MHz[0m
+[0;32mI (336) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (344) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (817) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (824) cpu_start: Pro cpu start user code[0m
+[0;32mI (824) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (824) app_init: Application information:[0m
+[0;32mI (827) app_init: Project name:     person_detection[0m
+[0;32mI (833) app_init: App version:      b8c6e21-dirty[0m
+[0;32mI (838) app_init: Compile time:     Jun 25 2024 01:26:52[0m
+[0;32mI (844) app_init: ELF file SHA256:  3e1009c20...[0m
+[0;32mI (850) app_init: ESP-IDF:          v5.4-dev-421-g4523f2d674[0m
+[0;32mI (856) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (861) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (866) efuse_init: Chip rev:         v1.1[0m
+[0;32mI (871) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (878) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (884) heap_init: At 3FFC8138 len 00017EC8 (95 KiB): DRAM[0m
+[0;32mI (890) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (896) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (903) heap_init: At 40090A28 len 0000F5D8 (61 KiB): IRAM[0m
+[0;32mI (909) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;32mI (917) spi_flash: detected chip: generic[0m
+[0;32mI (921) spi_flash: flash io: qio[0m
+[0;33mW (925) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (936) main_task: Started on CPU0[0m
+[0;32mI (946) main_task: Calling app_main()[0m
+Before allocation
+Total heap size: 4427640
+Free heap size: 4402572
+Total PSRAM size: 4194304
+Free PSRAM size: 4191744
+Successfully allocated 384000 bytes in PSRAM.
+After successful PSRAM allocation
+Total heap size: 4427640
+Free heap size: 4018568
+Total PSRAM size: 4194304
+Free PSRAM size: 3807740
+[0;32mI (966) gpio: GPIO[25]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:2 [0m
+[0;32mI (976) cam_hal: cam init ok[0m
+[0;32mI (976) sccb: pin_sda 26 pin_scl 27[0m
+[0;32mI (986) sccb: sccb_i2c_port=1[0m
+[0;32mI (986) gpio: GPIO[32]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1026) camera: Detected camera at address=0x30[0m
+[0;32mI (1026) camera: Detected OV2640 camera[0m
+[0;32mI (1026) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (1096) esp32 ll_cam: node_size: 3072, nodes_per_line: 1, lines_per_node: 4, dma_half_buffer_min:  3072, dma_half_buffer: 12288,lines_per_half_buffer: 16, dma_buffer_size: 24576, image_size: 18432[0m
+[0;32mI (1106) cam_hal: buffer_size: 24576, half_buffer_size: 12288, node_buffer_size: 3072, node_cnt: 8, total_cnt: 1[0m
+[0;32mI (1116) cam_hal: Allocating 9216 Byte frame buffer in PSRAM[0m
+[0;32mI (1126) cam_hal: Allocating 9216 Byte frame buffer in PSRAM[0m
+[0;32mI (1126) cam_hal: cam config ok[0m
+[0;32mI (1136) ov2640: Set PLL: clk_2x: 0, clk_div: 3, pclk_auto: 1, pclk_div: 8[0m
+Camera Initialized
+
+Image Captured
+
+140341
+0[0;32mI (2186) LCD: Error in sending command[0m
+[0;32mI (2186) LCD: Error in sending command[0m
+[0;32mI (2186) LCD: Error in sending command[0m
+[0;32mI (2196) LCD: Error in sending command[0m
+[0;32mI (2206) LCD: Error in sending command[0m
+[0;32mI (2206) LCD: Error in sending command[0m
+[0;32mI (2206) LCD: Error in sending command[0m
+[0;32mI (2206) LCD: Error in sending command[0m
+[0;32mI (2206) LCD: Error in sending command[0m
+[0;32mI (2216) LCD: Error in sending command[0m
+[0;32mI (2216) LCD: Error in sending data[0m
+[0;32mI (2226) LCD: Error in sending data[0m
+[0;32mI (2226) LCD: Error in sending data[0m
+[0;32mI (2226) LCD: Error in sending data[0m
+[0;32mI (2236) LCD: Error in sending data[0m
+[0;32mI (2236) LCD: Error in sending data[0m
+[0;32mI (2246) LCD: Error in sending data[0m
+[0;32mI (2246) LCD: Error in sending data[0m
+[0;32mI (2246) LCD: Error in sending data[0m
+[0;32mI (2256) LCD: Error in sending command[0m
+[0;32mI (2256) LCD: Error in sending data[0m
+[0;32mI (2266) LCD: Error in sending data[0m
+[0;32mI (2266) LCD: Error in sending data[0m
+[0;32mI (2276) LCD: Error in sending data[0m
+car score:6%, bike score 94%
+[0;32mI (12326) LCD: Error in sending command[0m
+[0;32mI (12326) LCD: Error in sending command[0m
+[0;32mI (12326) LCD: Error in sending command[0m
+[0;32mI (12336) LCD: Error in sending command[0m
+[0;32mI (12346) LCD: Error in sending command[0m
+[0;32mI (12346) LCD: Error in sending command[0m
+[0;32mI (12346) LCD: Error in sending command[0m
+[0;32mI (12346) LCD: Error in sending command[0m
+[0;32mI (12346) LCD: Error in sending command[0m
+Image Captured
+
+141680
+1[0;31mE (18156) i2c: i2c driver install error[0m
+[0;32mI (18206) LCD: Error in sending command[0m
+[0;32mI (18206) LCD: Error in sending command[0m
+[0;32mI (18206) LCD: Error in sending command[0m
+[0;32mI (18216) LCD: Error in sending command[0m
+[0;32mI (18226) LCD: Error in sending command[0m
+[0;32mI (18226) LCD: Error in sending command[0m
+[0;32mI (18226) LCD: Error in sending command[0m
+[0;32mI (18226) LCD: Error in sending command[0m
+[0;32mI (18226) LCD: Error in sending command[0m
+[0;32mI (18236) LCD: Error in sending command[0m
+[0;32mI (18236) LCD: Error in sending data[0m
+[0;32mI (18246) LCD: Error in sending data[0m
+[0;32mI (18246) LCD: Error in sending data[0m
+[0;32mI (18246) LCD: Error in sending data[0m
+[0;32mI (18256) LCD: Error in sending data[0m
+[0;32mI (18256) LCD: Error in sending data[0m
+[0;32mI (18266) LCD: Error in sending data[0m
+[0;32mI (18266) LCD: Error in sending data[0m
+[0;32mI (18276) LCD: Error in sending data[0m
+[0;32mI (18276) LCD: Error in sending command[0m
+[0;32mI (18276) LCD: Error in sending data[0m
+[0;32mI (18286) LCD: Error in sending data[0m
+[0;32mI (18286) LCD: Error in sending data[0m
+[0;32mI (18296) LCD: Error in sending data[0m
+car score:80%, bike score 20%
+[0;32mI (28346) LCD: Error in sending command[0m
+[0;32mI (28346) LCD: Error in sending command[0m
+[0;32mI (28346) LCD: Error in sending command[0m
+[0;32mI (28356) LCD: Error in sending command[0m
+[0;32mI (28366) LCD: Error in sending command[0m
+[0;32mI (28366) LCD: Error in sending command[0m
+[0;32mI (28366) LCD: Error in sending command[0m
+[0;32mI (28366) LCD: Error in sending command[0m
+[0;32mI (28366) LCD: Error in sending command[0m
+Image Captured
+
+143013
+2[0;31mE (34176) i2c: i2c driver install error[0m
+[0;32mI (34226) LCD: Error in sending command[0m
+[0;32mI (34226) LCD: Error in sending command[0m
+[0;32mI (34226) LCD: Error in sending command[0m
+[0;32mI (34236) LCD: Error in sending command[0m
+[0;32mI (34246) LCD: Error in sending command[0m
+[0;32mI (34246) LCD: Error in sending command[0m
+[0;32mI (34246) LCD: Error in sending command[0m
+[0;32mI (34246) LCD: Error in sending command[0m
+[0;32mI (34246) LCD: Error in sending command[0m
+[0;32mI (34256) LCD: Error in sending command[0m
+[0;32mI (34256) LCD: Error in sending data[0m
+[0;32mI (34266) LCD: Error in sending data[0m
+[0;32mI (34266) LCD: Error in sending data[0m
+[0;32mI (34266) LCD: Error in sending data[0m
+[0;32mI (34276) LCD: Error in sending data[0m
+[0;32mI (34276) LCD: Error in sending data[0m
+[0;32mI (34286) LCD: Error in sending data[0m
+[0;32mI (34286) LCD: Error in sending data[0m
+[0;32mI (34296) LCD: Error in sending data[0m
+[0;32mI (34296) LCD: Error in sending command[0m
+[0;32mI (34296) LCD: Error in sending data[0m
+[0;32mI (34306) LCD: Error in sending data[0m
+[0;32mI (34306) LCD: Error in sending data[0m
+[0;32mI (34316) LCD: Error in sending data[0m
+car score:69%, bike score 31%
+[0;32mI (44366) LCD: Error in sending command[0m
+[0;32mI (44366) LCD: Error in sending command[0m
+[0;32mI (44366) LCD: Error in sending command[0m
+[0;32mI (44376) LCD: Error in sending command[0m
+[0;32mI (44386) LCD: Error in sending command[0m
+[0;32mI (44386) LCD: Error in sending command[0m
+[0;32mI (44386) LCD: Error in sending command[0m
+[0;32mI (44386) LCD: Error in sending command[0m
+[0;32mI (44386) LCD: Error in sending command[0m
+Image Captured
+
+144346
+3[0;31mE (50196) i2c: i2c driver install error[0m
+[0;32mI (50246) LCD: Error in sending command[0m
+[0;32mI (50246) LCD: Error in sending command[0m
+[0;32mI (50246) LCD: Error in sending command[0m
+[0;32mI (50256) LCD: Error in sending command[0m
+[0;32mI (50266) LCD: Error in sending command[0m
+[0;32mI (50266) LCD: Error in sending command[0m
+[0;32mI (50266) LCD: Error in sending command[0m
+[0;32mI (50266) LCD: Error in sending command[0m
+[0;32mI (50266) LCD: Error in sending command[0m
+[0;32mI (50276) LCD: Error in sending command[0m
+[0;32mI (50276) LCD: Error in sending data[0m
+[0;32mI (50286) LCD: Error in sending data[0m
+[0;32mI (50286) LCD: Error in sending data[0m
+[0;32mI (50286) LCD: Error in sending data[0m
+[0;32mI (50296) LCD: Error in sending data[0m
+[0;32mI (50296) LCD: Error in sending data[0m
+[0;32mI (50306) LCD: Error in sending data[0m
+[0;32mI (50306) LCD: Error in sending data[0m
+[0;32mI (50316) LCD: Error in sending data[0m
+[0;32mI (50316) LCD: Error in sending command[0m
+[0;32mI (50316) LCD: Error in sending data[0m
+[0;32mI (50326) LCD: Error in sending data[0m
+[0;32mI (50326) LCD: Error in sending data[0m
+car score:100%, bike score 0%
+[0;32mI (60386) LCD: Error in sending command[0m
+[0;32mI (60386) LCD: Error in sending command[0m
+[0;32mI (60386) LCD: Error in sending command[0m
+[0;32mI (60396) LCD: Error in sending command[0m
+[0;32mI (60406) LCD: Error in sending command[0m
+[0;32mI (60406) LCD: Error in sending command[0m
+[0;32mI (60406) LCD: Error in sending command[0m
+[0;32mI (60406) LCD: Error in sending command[0m
+[0;32mI (60406) LCD: Error in sending command[0m
+Image Captured
+
+145679
+4[0;31mE (66216) i2c: i2c driver install error[0m
+[0;32mI (66266) LCD: Error in sending command[0m
+[0;32mI (66266) LCD: Error in sending command[0m
+[0;32mI (66266) LCD: Error in sending command[0m
+[0;32mI (66276) LCD: Error in sending command[0m
+[0;32mI (66286) LCD: Error in sending command[0m
+[0;32mI (66286) LCD: Error in sending command[0m
+[0;32mI (66286) LCD: Error in sending command[0m
+[0;32mI (66286) LCD: Error in sending command[0m
+[0;32mI (66286) LCD: Error in sending command[0m
+[0;32mI (66296) LCD: Error in sending command[0m
+[0;32mI (66296) LCD: Error in sending data[0m
+[0;32mI (66306) LCD: Error in sending data[0m
+[0;32mI (66306) LCD: Error in sending data[0m
+[0;32mI (66306) LCD: Error in sending data[0m
+[0;32mI (66316) LCD: Error in sending data[0m
+[0;32mI (66316) LCD: Error in sending data[0m
+[0;32mI (66326) LCD: Error in sending data[0m
+[0;32mI (66326) LCD: Error in sending data[0m
+[0;32mI (66336) LCD: Error in sending data[0m
+[0;32mI (66336) LCD: Error in sending command[0m
+[0;32mI (66336) LCD: Error in sending data[0m
+[0;32mI (66346) LCD: Error in sending data[0m
+[0;32mI (66346) LCD: Error in sending data[0m
+[0;32mI (66356) LCD: Error in sending data[0m
+car score:50%, bike score 50%
+[0;32mI (76406) LCD: Error in sending command[0m
+[0;32mI (76406) LCD: Error in sending command[0m
+[0;32mI (76406) LCD: Error in sending command[0m
+[0;32mI (76416) LCD: Error in sending command[0m
+[0;32mI (76426) LCD: Error in sending command[0m
+[0;32mI (76426) LCD: Error in sending command[0m
+[0;32mI (76426) LCD: Error in sending command[0m
+[0;32mI (76426) LCD: Error in sending command[0m
+[0;32mI (76426) LCD: Error in sending command[0m
+Image Captured
+
+147014
+5[0;31mE (82236) i2c: i2c driver install error[0m
+[0;32mI (82286) LCD: Error in sending command[0m
+[0;32mI (82286) LCD: Error in sending command[0m
+[0;32mI (82286) LCD: Error in sending command[0m
+[0;32mI (82296) LCD: Error in sending command[0m
+[0;32mI (82306) LCD: Error in sending command[0m
+[0;32mI (82306) LCD: Error in sending command[0m
+[0;32mI (82306) LCD: Error in sending command[0m
+[0;32mI (82306) LCD: Error in sending command[0m
+[0;32mI (82306) LCD: Error in sending command[0m
+[0;32mI (82316) LCD: Error in sending command[0m
+[0;32mI (82316) LCD: Error in sending data[0m
+[0;32mI (82326) LCD: Error in sending data[0m
+[0;32mI (82326) LCD: Error in sending data[0m
+[0;32mI (82326) LCD: Error in sending data[0m
+[0;32mI (82336) LCD: Error in sending data[0m
+[0;32mI (82336) LCD: Error in sending data[0m
+[0;32mI (82346) LCD: Error in sending data[0m
+[0;32mI (82346) LCD: Error in sending data[0m
+[0;32mI (82356) LCD: Error in sending data[0m
+[0;32mI (82356) LCD: Error in sending command[0m
+[0;32mI (82356) LCD: Error in sending data[0m
+[0;32mI (82366) LCD: Error in sending data[0m
+[0;32mI (82366) LCD: Error in sending data[0m
+car score:100%, bike score 0%
+[0;32mI (92426) LCD: Error in sending command[0m
+[0;32mI (92426) LCD: Error in sending command[0m
+[0;32mI (92426) LCD: Error in sending command[0m
+[0;32mI (92436) LCD: Error in sending command[0m
+[0;32mI (92446) LCD: Error in sending command[0m
+[0;32mI (92446) LCD: Error in sending command[0m
+[0;32mI (92446) LCD: Error in sending command[0m
+[0;32mI (92446) LCD: Error in sending command[0m
+[0;32mI (92446) LCD: Error in sending command[0m
+Image Captured
+
+148347
+6[0;31mE (98256) i2c: i2c driver install error[0m
+[0;32mI (98306) LCD: Error in sending command[0m
+[0;32mI (98306) LCD: Error in sending command[0m
+[0;32mI (98306) LCD: Error in sending command[0m
+[0;32mI (98316) LCD: Error in sending command[0m
+[0;32mI (98326) LCD: Error in sending command[0m
+[0;32mI (98326) LCD: Error in sending command[0m
+[0;32mI (98326) LCD: Error in sending command[0m
+[0;32mI (98326) LCD: Error in sending command[0m
+[0;32mI (98326) LCD: Error in sending command[0m
+[0;32mI (98336) LCD: Error in sending command[0m
+[0;32mI (98336) LCD: Error in sending data[0m
+[0;32mI (98346) LCD: Error in sending data[0m
+[0;32mI (98346) LCD: Error in sending data[0m
+[0;32mI (98346) LCD: Error in sending data[0m
+[0;32mI (98356) LCD: Error in sending data[0m
+[0;32mI (98356) LCD: Error in sending data[0m
+[0;32mI (98366) LCD: Error in sending data[0m
+[0;32mI (98366) LCD: Error in sending data[0m
+[0;32mI (98376) LCD: Error in sending data[0m
+[0;32mI (98376) LCD: Error in sending command[0m
+[0;32mI (98376) LCD: Error in sending data[0m
+[0;32mI (98386) LCD: Error in sending data[0m
+[0;32mI (98386) LCD: Error in sending data[0m
+car score:100%, bike score 0%
+[0;32mI (108446) LCD: Error in sending command[0m
+[0;32mI (108446) LCD: Error in sending command[0m
+[0;32mI (108446) LCD: Error in sending command[0m
+[0;32mI (108456) LCD: Error in sending command[0m
+[0;32mI (108466) LCD: Error in sending command[0m
+[0;32mI (108466) LCD: Error in sending command[0m
+[0;32mI (108466) LCD: Error in sending command[0m
+[0;32mI (108466) LCD: Error in sending command[0m
+[0;32mI (108466) LCD: Error in sending command[0m
+Image Captured
+
+149682
+7[0;31mE (114276) i2c: i2c driver install error[0m
+[0;32mI (114326) LCD: Error in sending command[0m
+[0;32mI (114326) LCD: Error in sending command[0m
+[0;32mI (114326) LCD: Error in sending command[0m
+[0;32mI (114336) LCD: Error in sending command[0m
+[0;32mI (114346) LCD: Error in sending command[0m
+[0;32mI (114346) LCD: Error in sending command[0m
+[0;32mI (114346) LCD: Error in sending command[0m
+[0;32mI (114346) LCD: Error in sending command[0m
+[0;32mI (114346) LCD: Error in sending command[0m
+[0;32mI (114356) LCD: Error in sending command[0m
+[0;32mI (114356) LCD: Error in sending data[0m
+[0;32mI (114366) LCD: Error in sending data[0m
+[0;32mI (114366) LCD: Error in sending data[0m
+[0;32mI (114376) LCD: Error in sending data[0m
+[0;32mI (114376) LCD: Error in sending data[0m
+[0;32mI (114376) LCD: Error in sending data[0m
+[0;32mI (114386) LCD: Error in sending data[0m
+[0;32mI (114386) LCD: Error in sending data[0m
+[0;32mI (114396) LCD: Error in sending data[0m
+[0;32mI (114396) LCD: Error in sending command[0m
+[0;32mI (114406) LCD: Error in sending data[0m
+[0;32mI (114406) LCD: Error in sending data[0m
+[0;32mI (114406) LCD: Error in sending data[0m
+car score:100%, bike score 0%
+[0;32mI (124466) LCD: Error in sending command[0m
+[0;32mI (124466) LCD: Error in sending command[0m
+[0;32mI (124466) LCD: Error in sending command[0m
+[0;32mI (124476) LCD: Error in sending command[0m
+[0;32mI (124486) LCD: Error in sending command[0m
+[0;32mI (124486) LCD: Error in sending command[0m
+[0;32mI (124486) LCD: Error in sending command[0m
+[0;32mI (124486) LCD: Error in sending command[0m
+[0;32mI (124486) LCD: Error in sending command[0m
+Image Captured
+
+151015
+8[0;31mE (130296) i2c: i2c driver install error[0m
+[0;32mI (130346) LCD: Error in sending command[0m
+[0;32mI (130346) LCD: Error in sending command[0m
+[0;32mI (130346) LCD: Error in sending command[0m
+[0;32mI (130356) LCD: Error in sending command[0m
+[0;32mI (130366) LCD: Error in sending command[0m
+[0;32mI (130366) LCD: Error in sending command[0m
+[0;32mI (130366) LCD: Error in sending command[0m
+[0;32mI (130366) LCD: Error in sending command[0m
+[0;32mI (130366) LCD: Error in sending command[0m
+[0;32mI (130376) LCD: Error in sending command[0m
+[0;32mI (130376) LCD: Error in sending data[0m
+[0;32mI (130386) LCD: Error in sending data[0m
+[0;32mI (130386) LCD: Error in sending data[0m
+[0;32mI (130396) LCD: Error in sending data[0m
+[0;32mI (130396) LCD: Error in sending data[0m
+[0;32mI (130396) LCD: Error in sending data[0m
+[0;32mI (130406) LCD: Error in sending data[0m
+[0;32mI (130406) LCD: Error in sending data[0m
+[0;32mI (130416) LCD: Error in sending data[0m
+[0;32mI (130416) LCD: Error in sending command[0m
+[0;32mI (130426) LCD: Error in sending data[0m
+[0;32mI (130426) LCD: Error in sending data[0m
+[0;32mI (130426) LCD: Error in sending data[0m
+car score:97%, bike score 3%
+[0;32mI (140486) LCD: Error in sending command[0m
+[0;32mI (140486) LCD: Error in sending command[0m
+[0;32mI (140486) LCD: Error in sending command[0m
+[0;32mI (140496) LCD: Error in sending command[0m
+[0;32mI (140506) LCD: Error in sending command[0m
+[0;32mI (140506) LCD: Error in sending command[0m
+[0;32mI (140506) LCD: Error in sending command[0m
+[0;32mI (140506) LCD: Error in sending command[0m
+[0;32mI (140506) LCD: Error in sending command[0m
+Image Captured
+
+152350
+9[0;31mE (146316) i2c: i2c driver install error[0m
+[0;32mI (146366) LCD: Error in sending command[0m
+[0;32mI (146366) LCD: Error in sending command[0m
+[0;32mI (146366) LCD: Error in sending command[0m
+[0;32mI (146376) LCD: Error in sending command[0m
+[0;32mI (146386) LCD: Error in sending command[0m
+[0;32mI (146386) LCD: Error in sending command[0m
+[0;32mI (146386) LCD: Error in sending command[0m
+[0;32mI (146386) LCD: Error in sending command[0m
+[0;32mI (146386) LCD: Error in sending command[0m
+[0;32mI (146396) LCD: Error in sending command[0m
+[0;32mI (146396) LCD: Error in sending data[0m
+[0;32mI (146406) LCD: Error in sending data[0m
+[0;32mI (146406) LCD: Error in sending data[0m
+[0;32mI (146416) LCD: Error in sending data[0m
+[0;32mI (146416) LCD: Error in sending data[0m
+[0;32mI (146416) LCD: Error in sending data[0m
+[0;32mI (146426) LCD: Error in sending data[0m
+[0;32mI (146426) LCD: Error in sending data[0m
+[0;32mI (146436) LCD: Error in sending data[0m
+[0;32mI (146436) LCD: Error in sending command[0m
+[0;32mI (146446) LCD: Error in sending data[0m
+[0;32mI (146446) LCD: Error in sending data[0m
+[0;32mI (146446) LCD: Error in sending data[0m
+car score:98%, bike score 2%
+[0;32mI (156506) LCD: Error in sending command[0m
+[0;32mI (156506) LCD: Error in sending command[0m
+[0;32mI (156506) LCD: Error in sending command[0m
+[0;32mI (156516) LCD: Error in sending command[0m
+[0;32mI (156526) LCD: Error in sending command[0m
+[0;32mI (156526) LCD: Error in sending command[0m
+[0;32mI (156526) LCD: Error in sending command[0m
+[0;32mI (156526) LCD: Error in sending command[0m
+[0;32mI (156526) LCD: Error in sending command[0m
+Image Captured
+
+153683
+10[0;31mE (162336) i2c: i2c driver install error[0m
+[0;32mI (162386) LCD: Error in sending command[0m
+[0;32mI (162386) LCD: Error in sending command[0m
+[0;32mI (162386) LCD: Error in sending command[0m
+[0;32mI (162396) LCD: Error in sending command[0m
+[0;32mI (162406) LCD: Error in sending command[0m
+[0;32mI (162406) LCD: Error in sending command[0m
+[0;32mI (162406) LCD: Error in sending command[0m
+[0;32mI (162406) LCD: Error in sending command[0m
+[0;32mI (162406) LCD: Error in sending command[0m
+[0;32mI (162416) LCD: Error in sending command[0m
+[0;32mI (162416) LCD: Error in sending data[0m
+[0;32mI (162426) LCD: Error in sending data[0m
+[0;32mI (162426) LCD: Error in sending data[0m
+[0;32mI (162436) LCD: Error in sending data[0m
+[0;32mI (162436) LCD: Error in sending data[0m
+[0;32mI (162436) LCD: Error in sending data[0m
+[0;32mI (162446) LCD: Error in sending data[0m
+[0;32mI (162446) LCD: Error in sending data[0m
+[0;32mI (162456) LCD: Error in sending data[0m
+[0;32mI (162456) LCD: Error in sending command[0m
+[0;32mI (162466) LCD: Error in sending data[0m
+[0;32mI (162466) LCD: Error in sending data[0m
+[0;32mI (162466) LCD: Error in sending data[0m
+car score:98%, bike score 2%
+[0;32mI (172526) LCD: Error in sending command[0m
+[0;32mI (172526) LCD: Error in sending command[0m
+[0;32mI (172526) LCD: Error in sending command[0m
+[0;32mI (172536) LCD: Error in sending command[0m
+[0;32mI (172546) LCD: Error in sending command[0m
+[0;32mI (172546) LCD: Error in sending command[0m
+[0;32mI (172546) LCD: Error in sending command[0m
+[0;32mI (172546) LCD: Error in sending command[0m
+[0;32mI (172546) LCD: Error in sending command[0m
+Image Captured
+
+155018
+11[0;31mE (178356) i2c: i2c driver install error[0m
+[0;32mI (178406) LCD: Error in sending command[0m
+[0;32mI (178406) LCD: Error in sending command[0m
+[0;32mI (178406) LCD: Error in sending command[0m
+[0;32mI (178416) LCD: Error in sending command[0m
+[0;32mI (178426) LCD: Error in sending command[0m
+[0;32mI (178426) LCD: Error in sending command[0m
+[0;32mI (178426) LCD: Error in sending command[0m
+[0;32mI (178426) LCD: Error in sending command[0m
+[0;32mI (178426) LCD: Error in sending command[0m
+[0;32mI (178436) LCD: Error in sending command[0m
+[0;32mI (178436) LCD: Error in sending data[0m
+[0;32mI (178446) LCD: Error in sending data[0m
+[0;32mI (178446) LCD: Error in sending data[0m
+[0;32mI (178456) LCD: Error in sending data[0m
+[0;32mI (178456) LCD: Error in sending data[0m
+[0;32mI (178456) LCD: Error in sending data[0m
+[0;32mI (178466) LCD: Error in sending data[0m
+[0;32mI (178466) LCD: Error in sending data[0m
+[0;32mI (178476) LCD: Error in sending data[0m
+[0;32mI (178476) LCD: Error in sending command[0m
+[0;32mI (178486) LCD: Error in sending data[0m
+[0;32mI (178486) LCD: Error in sending data[0m
+[0;32mI (178486) LCD: Error in sending data[0m
+car score:98%, bike score 2%
+[0;32mI (188546) LCD: Error in sending command[0m
+[0;32mI (188546) LCD: Error in sending command[0m
+[0;32mI (188546) LCD: Error in sending command[0m
+[0;32mI (188556) LCD: Error in sending command[0m
+[0;32mI (188566) LCD: Error in sending command[0m
+[0;32mI (188566) LCD: Error in sending command[0m
+[0;32mI (188566) LCD: Error in sending command[0m
+[0;32mI (188566) LCD: Error in sending command[0m
+[0;32mI (188566) LCD: Error in sending command[0m

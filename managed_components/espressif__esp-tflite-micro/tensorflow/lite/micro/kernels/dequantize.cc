@@ -25,9 +25,7 @@ limitations under the License.
 #include "tensorflow/lite/micro/kernels/dequantize.h"
 #include "tensorflow/lite/micro/kernels/kernel_util.h"
 #include "tensorflow/lite/micro/micro_log.h"
-#include <esp_timer.h>
 
-long long dequantize_total_time = 0;
 namespace tflite {
 
 void* DequantizeInit(TfLiteContext* context, const char* buffer,
@@ -37,7 +35,6 @@ void* DequantizeInit(TfLiteContext* context, const char* buffer,
 }
 
 TfLiteStatus DequantizeEval(TfLiteContext* context, TfLiteNode* node) {
-  long long start_time = esp_timer_get_time();
   TFLITE_DCHECK(node->user_data != nullptr);
   DequantizeOpData* data = static_cast<DequantizeOpData*>(node->user_data);
 
@@ -75,7 +72,7 @@ TfLiteStatus DequantizeEval(TfLiteContext* context, TfLiteNode* node) {
                   TfLiteTypeGetName(output->type));
       return kTfLiteError;
   }
-  dequantize_total_time += esp_timer_get_time() - start_time;
+
   return kTfLiteOk;
 }
 

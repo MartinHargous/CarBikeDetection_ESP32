@@ -21,7 +21,13 @@ limitations under the License.
 
 #include "detection_responder.h"
 #include "tensorflow/lite/micro/micro_log.h"
+#include "driver/i2c.h"
 
+extern "C" {
+    #include "i2c-lcd.h"  // Include your C header file here
+}
+#define I2C_SDA_PIN GPIO_NUM_14
+#define I2C_SCL_PIN GPIO_NUM_15
 #include "esp_main.h"
 #include "driver/gpio.h"
 #define LED_PIN GPIO_NUM_4
@@ -38,6 +44,7 @@ static lv_obj_t *camera_canvas = NULL;
 static lv_obj_t *person_indicator = NULL;
 static lv_obj_t *label = NULL;
 
+char buffer[10];
 static void create_gui(void)
 {
   bsp_display_start();
@@ -59,26 +66,46 @@ static void create_gui(void)
   bsp_display_unlock();
 }
 #endif // DISPLAY_SUPPORT
+static esp_err_t i2c_master_init(void)
+{
+    i2c_port_t i2c_master_port = I2C_NUM_0;
 
-static void init_gpio(void) {
-    gpio_config_t io_conf;
-    io_conf.intr_type = GPIO_INTR_DISABLE;
-    io_conf.mode = GPIO_MODE_OUTPUT;
-    io_conf.pin_bit_mask = (1ULL << LED_PIN);
-    io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
-    io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
-    gpio_config(&io_conf);
+i2c_config_t conf;
+conf.mode = I2C_MODE_MASTER;
+conf.sda_io_num = I2C_SDA_PIN;
+conf.scl_io_num = I2C_SCL_PIN;
+conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
+conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
+conf.master.clk_speed = 100000;
+    i2c_param_config(i2c_master_port, &conf);
+
+    return i2c_driver_install(i2c_master_port, conf.mode, 0, 0, 0);
 }
 
-void RespondToDetection(float car_score, float bike_score) {
+void RespondToDetection(float car_score, float bike_score, int count) {
   int car_score_int = (car_score) * 100 + 0.5;
   int bike_score_int = (bike_score) * 100 + 0.5;
-  if (car_score_int >= 60) { // Si la puntuaciÃ³n es mayor o igual a 60%
-        gpio_set_level(LED_PIN, 1); // Enciende el LED
+   printf("%d", count);
+
+    i2c_master_init();
+    lcd_init();
+    lcd_put_cur(0, 0);
+    lcd_send_string("Detected ");
+    if (car_score_int >80) {
+        lcd_put_cur(0, 9);
+        lcd_send_string("Car");
+    } else if (bike_score_int > 80) {
+
+        lcd_put_cur(0, 9);
+        lcd_send_string("Bike"); 
     } else {
-        gpio_set_level(LED_PIN, 0); // Apaga el LED
+
+        lcd_put_cur(0, 9);
+        lcd_send_string("None");
     }
 
+    vTaskDelay(1000);
+    lcd_clear();
 #if DISPLAY_SUPPORT
     if (!camera_canvas) {
       create_gui();
@@ -95,9 +122,12 @@ void RespondToDetection(float car_score, float bike_score) {
     lv_canvas_set_buffer(camera_canvas, buf, IMG_WD, IMG_HT, LV_IMG_CF_TRUE_COLOR);
     bsp_display_unlock();
 #endif // DISPLAY_SUPPORT
+
   MicroPrintf("car score:%d%%, bike score %d%%",
-              car_score_int, bike_score_int);
-  init_gpio();
+               car_score_int, bike_score_int);   
+
+  lcd_init();
+
 }
 
 
