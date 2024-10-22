@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "person_detection",
-    "project_version":    "b8c6e21-dirty",
+    "project_version":    "fa885b1-dirty",
     "project_path":       "/home/mmhargous/esp/projects_tf/person_detection",
     "idf_path":           "/home/mmhargous/esp/idf/esp-idf",
     "build_dir":          "/home/mmhargous/esp/projects_tf/person_detection/build",
@@ -2823,18 +2823,6 @@
             "managed_priv_reqs": [ "espressif__esp-nn" ],
             "include_dirs": [ ".", "third_party/gemmlowp", "third_party/flatbuffers/include", "third_party/ruy", "third_party/kissfft", "signal/micro/kernels", "signal/src", "signal/src/kiss_fft_wrappers" ]
         },
-        "espressif__esp-nn": {
-            "alias": "idf::espressif__esp-nn",
-            "target": "___idf_espressif__esp-nn",
-            "prefix": "idf",
-            "dir": "/home/mmhargous/esp/projects_tf/person_detection/managed_components/espressif__esp-nn",
-            "lib": "__idf_espressif__esp-nn",
-            "reqs": [],
-            "priv_reqs": [],
-            "managed_reqs": [],
-            "managed_priv_reqs": [],
-            "include_dirs": [ "include", "src/common" ]
-        },
         "espressif__esp32-camera": {
             "alias": "idf::espressif__esp32-camera",
             "target": "___idf_espressif__esp32-camera",
@@ -2846,6 +2834,18 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": [ "driver/include", "conversions/include" ]
+        },
+        "espressif__esp-nn": {
+            "alias": "idf::espressif__esp-nn",
+            "target": "___idf_espressif__esp-nn",
+            "prefix": "idf",
+            "dir": "/home/mmhargous/esp/projects_tf/person_detection/managed_components/espressif__esp-nn",
+            "lib": "__idf_espressif__esp-nn",
+            "reqs": [],
+            "priv_reqs": [],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "include_dirs": [ "include", "src/common" ]
         }
     },
     "debug_prefix_map_gdbinit": ""
